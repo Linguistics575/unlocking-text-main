@@ -1,0 +1,6 @@
+COMMAND: scan_from_pdf.py -r 800 -i sample -o tmp -p 0 -f sample_journal.pdf
+Reading 2 pages from "sample_journal"
+    resolution 800 dpi
+    page numbering starts at 0
+    page 0
+    page 1
