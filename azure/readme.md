@@ -1,4 +1,4 @@
-# Wrapper to do Handwriting Recognition (and also regular OCR) calling the Microsoft Azure Cognitive Services API.
+# Wrapper to do Handwriting Recognition (and also regular OCR) by calling the Microsoft Azure Cognitive Services API.
 ---
 ## User Guide
 The `recognize_text.py` script will read in a locally stored image, present it to the Microsoft Azure Computer Vision to do handwriting recognition on it, and retrieve and return the result.  It can also be used to do optical character recognition on typewritten text.  The Microsoft Azure handwriting recognizer is a web-based service.  The script will send your image over the web to the recognizer, the recognizer will process your image and extract the text from it, and then the script will retrieve the recognition results.  See [Usage](#Usage) below for details.
@@ -93,3 +93,7 @@ The form of the command will be:
    * `python recognize_text.py config.yml -i my_image_file.png [-o my_output_directory] --ocr` 
 * for OCR recognition (of printed, typewritten text) for a batch of files:
    * `python recognize_text.py config.yml -f file_with_a_list_paths.txt [-o my_output_directory] --ocr`
+
+---
+## Technical Documentation
+`recognize_text.py` is truly very simple.  It sends a POST request to the Microsoft API that contains the image data along with the subscription key and url as retrieved from `config.yml`  It then probes the url returned from the request until the recognition result is ready, and retrieves the result as returned in json format.  The json contains bounding box locations as well as the recognized text.  This information is used to created a pyplot image of the original image with the bounding boxes and recognized text superimposed upon it (the `.annotated.png` output file).  All functions have been thoroughly documented.
