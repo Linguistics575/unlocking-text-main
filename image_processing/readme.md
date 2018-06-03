@@ -1,5 +1,5 @@
 ## _Jupyter Notebook_ based Image Binarizer.
-This is a utility to binarize an image using [adaptive thresholding](http://scikit-image.org/docs/0.12.x/auto_examples/segmentation/plot_threshold_adaptive.html).  The idea is to find small local darkness thresholds over which everything is foreground (text) in our case, and under which everything is background.
+This is a utility to binarize an image using [adaptive thresholding](http://scikit-image.org/docs/0.12.x/auto_examples/segmentation/plot_threshold_adaptive.html).  The idea is to find small local darkness thresholds over which everything is foreground (text, in our case), and under which everything is background.
 
 The utility uses a [Jupyter Notebook](http://jupyter.org/), an "open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text."
 
