@@ -1,5 +1,7 @@
-## Wrapper to do Handwriting Recognition (and also regular OCR) calling the Microsoft Azure Cognitive Services API.
-This script will read in a locally stored image, present it to the Microsoft Azure Computer Vision API to do handwriting recognition on it, and retrieve and return the result.  It can also be used to do optical character recognition on typewritten text.
+# Wrapper to do Handwriting Recognition (and also regular OCR) calling the Microsoft Azure Cognitive Services API.
+---
+## User Guide
+The `recognize_text.py` script will read in a locally stored image, present it to the Microsoft Azure Computer Vision to do handwriting recognition on it, and retrieve and return the result.  It can also be used to do optical character recognition on typewritten text.  The Microsoft Azure handwriting recognizer is a web-based service.  The script will send your image over the web to the recognizer, the recognizer will process your image and extract the text from it, and then the script will retrive the recognition results.  See [Usage](#Usage) below for details.
 * Images must be less then 4MB and smaller than 3200 pixes x 3200 pixels, in JPEG, PNG, GIF, or BMP formats.
 * For handwriting recognition, you'll get 2 output files:
   * A `.recognized.txt` file that has the recognized text
@@ -12,11 +14,13 @@ This script will read in a locally stored image, present it to the Microsoft Azu
 
 2.  When you get the subscription key, it will be for a particular region, with a particular URL that has to go into the `config.yml` file.  Have a look at the `config.yml` file for an example.  The URL will be something like `https://<YOUR REGION HERE>.api.cognitive.microsoft.com/vision/v1.0/RecognizeText`
 
-3.  The subscription key itself should go in a file, `key_file.key` might be a handy name.  Then put the path to the key file in the `config.yml`.  (Pardon the extra step.  Just keeps it a little more secure since this is on github.)  See `sample_key_file.key` for an example.
+3.  The subscription key itself should go in a file, `key_file.key`.  See the `key_file.key` file that has been provided in this repository for an example.  The path to the key file should also appear in the `config.yml`.  If you run the script directly from your local copy of this repository (see installation instructions below), then it will not be necessary to change the path in the `config.yml`.  However, if you indend to run the script from elsewhere, then it will be necessary for the full path to the key file to appear in `config.yml`.  See `config.yml` itself for an example.
 
 
 ### Installation Instructions
-1.  The easiest way to use this tools is to simply download this repository.  TODO: pointer to downloading the repo.)  Experienced git users may find it more convenient to clone it.
+1.  The easiest way to use these tools is to simply download this repository as a zip file and unzip it (although experienced git users may find it more convenient to clone it.)  To download the repository, [from our main page](https://github.com/Linguistics575/unlocking-text-main), look for the green button that says "clone or download" and click it.  Then cick, "download zip" as shown:
+![download the zip file](https://github.com/Linguistics575/unlocking-text-main/blob/master/azure/screenshots/download-repository.png "Download the zip file")
+After downloading the zip file, you will have to unzip the folder, which on most platform is initiated simply by double-clicking it.
 1. Our tools are written in Python3; therefore, you will need to have Python installed on your computer.  For experienced pythonistas, simply setup a python3 environment using the `requirements.txt` file.  For everyone else, read on:
    * We recommend the `Miniconda` python distribution.  If you do not already have pythong on your machine, download and install the Python 3.6 version of `Miniconda` for your platform [here](https://conda.io/miniconda.html).  TODO: Walk through installing Miniconda.
    * You will set up a separate "virtual environment" to run our tools in.  "Virtual envrionments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, we will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  Follow the instructions for your platform below:
