@@ -7,7 +7,7 @@ The purpose of the tools in this repository us to relibably "unlock" the text fr
 This repository contains 4 principal tools, each with its own User Guide and Technical Documentation, in its own direcotry:
 - `azure/`: contains a script to run an image through the MS Azure Handwriting Recognition API and related resources.  [User Guide](https://github.com/Linguistics575/unlocking-text-main/tree/master/azure)  [Technical Documentation](https://github.com/Linguistics575/unlocking-text-main/tree/master/azure#technical-documentation)
 - `evaluation/`: contains a script to calcualte the Word Error Rate (WER) of an OCRed text by compariing it to a human transcription. [User Guide](https://github.com/Linguistics575/unlocking-text-main/tree/master/evaluation/WER) [Technical Documentation](https://github.com/Linguistics575/unlocking-text-main/tree/master/evaluation/WER#technical-documentation)
-- `image_processing/`: contains an admittedly rough _jupyter notebook_ based utility to binarize an image.
+- `image_processing/`: contains an admittedly rough _jupyter notebook_ based utility to binarize an image. [User Guide](https://github.com/Linguistics575/unlocking-text-main/tree/master/image_processing#user-guide) [Technical Documentation](https://github.com/Linguistics575/unlocking-text-main/tree/master/image_processing#technical-documentation)
 - `ERIC's Utilities HERE`: contains stuff that Eric will write a sentene about here.
 
 See the READMEs/User Guides in the corresponding directories for more information.
