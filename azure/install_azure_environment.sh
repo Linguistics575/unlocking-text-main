@@ -29,7 +29,7 @@ fi
 echo "setting up azure_environment..."
 $pycmd -m venv azure_environment
 
-ln ./azure_environment/bin/activate activate -sf
+ln -sf ./azure_environment/bin/activate activate
 echo "activating environment..."
 source ./activate
 
