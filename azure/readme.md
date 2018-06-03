@@ -20,17 +20,19 @@ The `recognize_text.py` script will read in a locally stored image, present it t
 ### Installation Instructions
 1.  The easiest way to use these tools is to simply download this repository as a zip file and unzip it (although experienced git users may find it more convenient to clone it.)  To download the repository, [from our main page](https://github.com/Linguistics575/unlocking-text-main), look for the green button that says "clone or download" and click it.  Then cick, "download zip" as shown:
 ![download the zip file](https://github.com/Linguistics575/unlocking-text-main/blob/master/azure/screenshots/download-repository.png "Download the zip file")
+
 After downloading the zip file, you will have to unzip the folder, which on most platform is initiated simply by double-clicking it.
 1. Our tools are written in Python3; therefore, you will need to have Python installed on your computer.  For experienced pythonistas, simply setup a python3 environment using the `requirements.txt` file and proceed to the [Usage](#usage) section.  For everyone else, read the remaining installation instructions for your platform: [Windows](#Remaining-instructions-for-Windows-users), or [Linux and Mac](#Remaining-instructions-for-Linux-and-Mac-users).
- ##### Remaining instructions for Windows users:
+ ##### Remaining instructions for Windows users
  *  You will set up a "virtual environment" to run our tools in.  "Virtual envrionments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
 1. If you already have python3 on your system, or if you are unsure if you do, you may run our installation batch script, which will check to see if you have python3, and give you an error message if you do not.  (See step 2 below.)   If you do not have python3 on your system, you will have to install it.  We recommend the `Miniconda` python distribution.  Download and install the Python 3.6 version of `Miniconda` [here](https://conda.io/miniconda.html) by downloading the apprpriate `.exe` (most likely the 64-bit exe installer for windows) and running it.  We recommend accepting default options.
-2. To run our installation batch script, you will have to open a command terminal in the `azure` working directory.  Here is how to do that:
-        1. In the search bar on the start menu, type `cmd`.  You should see something like this:
-        2. Double-click it.
-        3. Now we have to get to the `azure` working directory.  The easiest way is to copy the path from the address bar in windows explorer to the clipboard.  In Windows explorer, navigate to the location to which you unzipped the repository, and within that repository, double-click the `azure` folder.  You should now see a directory that looks like this:
-        4. Copy the path from the address bar.
-        5. Go back to the command terminal and click anywhere in the window.  Then type `cd`,  then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work.)
+2. To run our installation batch script, you will have to open a command terminal in the `azure` working directory.
+    * Here is how to do that:
+    1. In the search bar on the start menu, type `cmd`.  You should see something like this:
+    2. Double-click it.
+    3. Now we have to get to the `azure` working directory.  The easiest way is to copy the path from the address bar in windows explorer to the clipboard.  In Windows explorer, navigate to the location to which you unzipped the repository, and within that repository, double-click the `azure` folder.  You should now see a directory that looks like this:
+    4. Copy the path from the address bar.
+    5. Go back to the command terminal and click anywhere in the window.  Then type `cd`,  then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work.)
         1. launch the `Anaconda command prompt` from the start menu, or, if you added anaconda to your path in step 2 above, simply start a windows command line.
         2. Navigate to the `azure` directory from the command line.  T  Then on the command line, type `cd`,  then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work.)
         3. type `install_azure_environment.bat`, and hit `Enter.`  If python3 is installed, you will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the installation was successful, and the following instructions:
@@ -38,7 +40,7 @@ After downloading the zip file, you will have to unzip the folder, which on most
             * `When you are finished, type "deactivate" `
         4. to begin using the azure environment, you will have to "activate" it as per the instructions you have just seen.   You are now ready to submit an image containing handwritten text to the Azure recognizer as in the [Usage](#usage) section below.  When you are finished, you can type "deactivate," or simply close the window.
 
-   * ##### Remaining instructions for Linux and Mac users:
+   * ##### Remaining instructions for Linux and Mac users
         1. Start a terminal session
         2. Navigate to the `azure directory`. TODO: Find out more about what this looks like on a mac.
         2. Type `install_azure_environment.sh` on the command line and hit `enter`.  You will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the setup of the environment is complete, and the following instructions:
