@@ -1,0 +1,10 @@
+./sample_gold_standards/a01-007.gold.txt	./sample_output/a01-007.recognized.txt
+./sample_gold_standards/a01-063x.gold.txt	./sample_output/a01-063x.recognized.txt
+./sample_gold_standards/a01-122.gold.txt	./sample_output/a01-122.recognized.txt
+./sample_gold_standards/a02-008.gold.txt	./sample_output/a02-008.recognized.txt
+./sample_gold_standards/a02-046.gold.txt	./sample_output/a02-046.recognized.txt
+./sample_gold_standards/a03-040.gold.txt	./sample_output/a03-040.recognized.txt
+./sample_gold_standards/a04-047.gold.txt	./sample_output/a04-047.recognized.txt
+./sample_gold_standards/a04-059.gold.txt	./sample_output/a04-059.recognized.txt
+./sample_gold_standards/a05-073.gold.txt	./sample_output/a05-073.recognized.txt
+./sample_gold_standards/a05-104.gold.txt	./sample_output/a05-104.recognized.txt
