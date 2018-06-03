@@ -1,5 +1,7 @@
 # Config file for Handwriting recognition
 url: https://eastus.api.cognitive.microsoft.com/vision/v1.0/RecognizeText
-key_file: /home/jbruno/Documents/UW/575-egypt/main-repo/azure/key_file.key
+key_file: ./key_file.key
+# if you intend to run the recognizer from any other directory, delete the above line, take away the # symbol from the line below, and put in the full path.
+#key_file: /home/jbruno/Documents/UW/575-egypt/main-repo/azure/key_file.key
 max_num_retries: 25
 
