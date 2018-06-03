@@ -36,7 +36,7 @@ This will allow you to run our tools from the windows command line.  However, yo
     3. Now we have to get to the `azure` working directory.  The easiest way is to copy the path from the address bar in windows explorer to the clipboard.  In Windows Explorer, navigate to the location to which you unzipped the repository, and within that repository, double-click the `azure` folder.
     4. Click within the address bar address bar to show the path, and hit `ctrl+v` to copy it.  It should look something like this:
     ![Copy azure path](./screenshots/windows-azure-path.png "Azure path")
-    5. Go back to the command terminal and click anywhere in the window.  Then type `cd`,  then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work in the terminal.)  Then hit enter.  You should now see something that looks like this:
+    5. Go back to the command terminal and click anywhere in the window.  Then type `cd`, a space, then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work in the terminal.)  Then hit enter.  You should now see something that looks like this:
     ![Working Directory](./screenshots/windows-working-dir.PNG "Working Directory")
 3. In the cmd window, type `install_azure_environment.bat`, and hit `Enter.`  If python3 is installed, you will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the installation was successful, and the following instructions:
             * `To begin using the azure environment, type "activate".`
@@ -49,16 +49,26 @@ This will allow you to run our tools from the windows command line.  However, yo
 1. If you already have python3 on your system, or if you are unsure if you do, you may run our installation shell script, which will check to see if you have python3, and give you an error message if you do not.  (See step 2 below.)   If you do not have python3 on your system, you will have to install it.  We recommend the `Miniconda` python distribution.  Download and install the Python 3.6 version of `Miniconda`.
     * Here is how to do that
     1. Download the 64-bit bash installer [here](https://conda.io/miniconda.html).
-    2. Start a terminal session, by Finder --> Go --> Utilities --> Terminal
-    3. type `cd ~/Downloads` to naviate to the `Downloads` directory
-    4. type `sh Miniconda3-latest-macOSX-86_64.sh` (the name of the of file you just downloaded).  This will begin the process of installing python3 on your system.  Hit enter several times to scroll through the license agreement, and finally type `yes` to accept it.  Press enter to confirm the location when asked.  The terminal may appear to hang for a moment, but do not worry.  It should start moving along shortly.  You see a message `Do you wish the installer to prepend the Miniconda3 install location to PATH in your /Users/mactest/.bash_profile?`  Type `yes`.  Quit the terminal.
+    2. To run the installer, you will have to issue a command in the terminal, so you will have to launch a terminal session.  From the Finder, select `Go`, then `Utilities`. Finallly, double click `Terminal` as shown:
+![Finding the terminal](./screenshots/mac-find-terminal.png "Finding the Terminal")
+    3. In the terminal window, type `cd ~/Downloads` and hit enter onto naviate to the `Downloads` directory.
+    4. type `sh Miniconda3-latest-macOSX-86_64.sh` (the name of the of file you just downloaded) and hit enter, as shown below.  (You can save yourself some typing by using tab completion.  Start typing just the beginning -- say, `sh Minicon` and then hit the tab key.)  
+![Installing Miniconda](./screenshots/mac-installing-miniconda.png "Installing Miniconda")
+This will begin the process of installing python3 on your system.  Hit enter several times to scroll through the license agreement, and finally type `yes` to accept it.  Press enter to confirm the location when asked.  The terminal may appear to hang for a moment, but do not worry.  It should start moving along shortly.  You see a message `Do you wish the installer to prepend the Miniconda3 install location to PATH in your /Users/mactest/.bash_profile?`  Type `yes`.  Quit the terminal.
 
-2. To run our install script to set up a virtual environment and install the dependancies necessary for our tools, you will need to Navigate to the `azure directory`. TODO: Find out more about what this looks like on a mac.
-        2. Type `install_azure_environment.sh` on the command line and hit `enter`.  You will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the setup of the environment is complete, and the following instructions:
+2. To run our install script to set up a virtual environment and install the dependencies necessary for our tools, you will need to launch a new terminal session and navigate to the `azure directory`.
+    * Here is the easiest way to do that:
+    1. Navigate to where you placed the `unlocking-text-main-master` directory in a Finder window, double-click `azure` to open it, then right-click any file in the folder and select "Get Info", as shown below:
+![Get Info](./screenshots/mac-get-info.png "Get Info")
+    2.Towards the top of the "Get Info" window, look for "Where" (as highlighted below), highlight it, right-click, and select `copy` to copy the path to the clipboard.
+![Copy the path to the azure directory](./screenshots/mac-where.png "Copy the path to the azure directory")
+    3. Launch a new terminal window as described above.  Then type `cd`,  a space, then right-click anywhere in the window, and select `paste`, and hit enter.  You should now see something that looks like this:
+    ![Working Directory](./screenshots/mac-working-dir.PNG "Working Directory")
+2. Type `./install_azure_environment.sh` on the command line and hit `enter`.  (Recall that you can use tab completion to save typing.)  You will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the setup of the environment is complete, and the following instructions:
             * `To activate environment, type "source activate"`
             * `to deactivate, type "deactivate"`
-            * When you are finished, type "deactivate" 
-        4. to begin using the azure environment, type "source activate" as per the instructions.   You are now ready to submit an image containing handwritten text to the Azure recognizer as in the [Usage](#usage) section below.  When you are finished, you can type "deactivate," or simply close the terminal.  
+            * `When you are finished, type "deactivate"`
+4. to begin using the azure environment, type "source activate" as per the instructions.   You are now ready to submit an image containing handwritten text to the Azure recognizer as in the [Usage](#usage) section below.  When you are finished, you can type "deactivate," or simply close the terminal.  
 
 ### Usage
 You can run this on a single image, or on a file containing the paths to as many images as you like.
