@@ -23,10 +23,10 @@ The `recognize_text.py` script will read in a locally stored image, present it t
 After downloading the zip file, you will have to unzip the folder, which on most platform is initiated simply by double-clicking it and moving the folder within (called `unlocking-text-main-master` to some convenient location, such as your documents folder for example.
 1. Our tools are written in Python3; therefore, you will need to have Python installed on your computer.  For experienced pythonistas, simply setup a python3 environment using the `requirements.txt` file and proceed to the [Usage](#usage) section.  For everyone else, read the remaining installation instructions for your platform: [Windows](#remaining-instructions-for-windows-users), or [Linux and Mac](#remaining-instructions-for-linux-and-mac-users).
 
- ##### Remaining instructions for Windows users
+ #### Remaining instructions for Windows users
  *  You will set up a "virtual environment" to run our tools in.  "Virtual environments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
 1. If you already have python3 on your system, or if you are unsure if you do, you may run our installation batch script, which will check to see if you have python3, and give you an error message if you do not.  (See step 2 below.)   If you do not have python3 on your system, you will have to install it.  We recommend the `Miniconda` python distribution.  Download and install the Python 3.6 version of `Miniconda` [here](https://conda.io/miniconda.html) by downloading the appropriate `.exe` (most likely the 64-bit exe installer for windows) and running it.  When you get to the "Advanced Options" screen, we *do* recommend clicking both boxes, even the one to "Add Anaconda to my PATH environment variable" as shown below.
-![Advanced Installation Options](./screenshots/miniconda-options.png "Advanced Options")
+![Advanced Installation Options](./screenshots/miniconda-options.PNG "Advanced Options")
 This will allow you to run our tools from the windows command line.  However, you may choose not to do this.  If that is the case, you will have to launch the "Anaconda Prompt" from the start menu whenever these instructions say to "launch/open a command line terminal."
 2. To run our installation batch script, you will have to open a command terminal in the `azure` working directory.
     * Here is how to do open a command line terminal in the `azure working directory`:
@@ -37,15 +37,15 @@ This will allow you to run our tools from the windows command line.  However, yo
     4. Click within the address bar address bar to show the path, and hit `ctrl+v` to copy it.  It should look something like this:
     ![Copy azure path](./screenshots/windows-azure-path.png "Azure path")
     5. Go back to the command terminal and click anywhere in the window.  Then type `cd`,  then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work in the terminal.)  Then hit enter.  You should now see something that looks like this:
-    ![Working Directory](./screenshots/windows-working-dir.png "Working Directory")
+    ![Working Directory](./screenshots/windows-working-dir.PNG "Working Directory")
 3. In the cmd window, type `install_azure_environment.bat`, and hit `Enter.`  If python3 is installed, you will see various messages scroll across the screen as the dependencies for the recognizer are installed.  This may take several minutes, and at times, the screen may appear to hang, as if if nothing is happening at all.  Within a few minutes, however, things should get moving again.  If all goes well, the last thing you see should be a message saying that the installation was successful, and the following instructions:
             * `To begin using the azure environment, type "activate".`
             * `When you are finished, type "deactivate" `
 4. to begin using the azure environment, you will have to "activate" it as per the instructions you have just seen.   You are now ready to submit an image containing handwritten text to the Azure recognizer as in the [Usage](#usage) section below.  When you are finished, you can type "deactivate," or simply close the cmd window.
 
-##### Remaining instructions for Linux and Mac users
-* Note: The explit paths mentioned these instructions are for Mac users.  Linux users should have no trouble adjusting as appropriate
-*  You will set up a "virtual environment" to run our tools in.  "Virtual envrionments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
+#### Remaining instructions for Linux and Mac users
+* Note: The explicit paths mentioned these instructions are for Mac users.  Linux users should have no trouble adjusting as appropriate.
+*  You will set up a "virtual environment" to run our tools in.  "Virtual environments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
 1. If you already have python3 on your system, or if you are unsure if you do, you may run our installation shell script, which will check to see if you have python3, and give you an error message if you do not.  (See step 2 below.)   If you do not have python3 on your system, you will have to install it.  We recommend the `Miniconda` python distribution.  Download and install the Python 3.6 version of `Miniconda`.
     * Here is how to do that
     1. Download the 64-bit bash installer [here](https://conda.io/miniconda.html).
