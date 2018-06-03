@@ -21,7 +21,7 @@ The `recognize_text.py` script will read in a locally stored image, present it t
 1.  The easiest way to use these tools is to simply download this repository as a zip file and unzip it (although experienced git users may find it more convenient to clone it.)  To download the repository, [from our main page](https://github.com/Linguistics575/unlocking-text-main), look for the green button that says "clone or download" and click it.  Then cick, "download zip" as shown:
 ![download the zip file](https://github.com/Linguistics575/unlocking-text-main/blob/master/azure/screenshots/download-repository.png "Download the zip file")
 After downloading the zip file, you will have to unzip the folder, which on most platform is initiated simply by double-clicking it and moving the folder within (called `unlocking-text-main-master` to some convenient location, such as your documents folder for example.
-1. Our tools are written in Python3; therefore, you will need to have Python installed on your computer.  For experienced pythonistas, simply setup a python3 environment using the `requirements.txt` file and proceed to the [Usage](#usage) section.  For everyone else, read the remaining installation instructions for your platform: [Windows](#remaining-instructions-for-windows-users), or [Linux and Mac](#remaining-instructions-for-linux-and-mac-users).
+1. Our tools are written in Python3; therefore, you will need to have Python3 installed on your computer.  For experienced pythonistas, simply setup a python3 environment using the `requirements.txt` file and proceed to the [Usage](#usage) section.  For everyone else, read the remaining installation instructions for your platform: [Windows](#remaining-instructions-for-windows-users), or [Linux and Mac](#remaining-instructions-for-linux-and-mac-users).
 
  #### Remaining instructions for Windows users
  *  You will set up a "virtual environment" to run our tools in.  "Virtual environments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
@@ -34,7 +34,7 @@ This will allow you to run our tools from the windows command line.  However, yo
     ![Windows command Terminal](./screenshots/windows-cmd.png "Windows Command Line Terminal")
     2. Click it to launch.  (Or, if you did not add Anaconda to your path, search for and launch the Anaconda Prompt and follow the rest of these instructions.)
     3. Now we have to get to the `azure` working directory.  The easiest way is to copy the path from the address bar in windows explorer to the clipboard.  In Windows Explorer, navigate to the location to which you unzipped the repository, and within that repository, double-click the `azure` folder.
-    4. Click within the address bar address bar to show the path, and hit `ctrl+v` to copy it.  It should look something like this:
+    4. Click within the address bar at the top of the screen to show the path, and hit `ctrl+c` to copy it.  It should look something like this:
     ![Copy azure path](./screenshots/windows-azure-path.png "Azure path")
     5. Go back to the command terminal and click anywhere in the window.  Then type `cd`, a space, then right-click anywhere in the window, and select `paste`.  (Unfortunately, `ctrl+v` will not work in the terminal.)  Then hit enter.  You should now see something that looks like this:
     ![Working Directory](./screenshots/windows-working-dir.PNG "Working Directory")
@@ -47,11 +47,11 @@ This will allow you to run our tools from the windows command line.  However, yo
 * Note: The explicit paths mentioned these instructions are for Mac users.  Linux users should have no trouble adjusting as appropriate.
 *  You will set up a "virtual environment" to run our tools in.  "Virtual environments" contain all the dependencies and packages required to run our code.  However, you may have other python tools on your system, which may have different dependencies, which may even conflict with those needed here.  To avoid these troubles, you will set up a "virtual environment" for our tools, which must be activated.  This will keep the azure environment separate from the environments you may otherwise need.  
 1. If you already have python3 on your system, or if you are unsure if you do, you may run our installation shell script, which will check to see if you have python3, and give you an error message if you do not.  (See step 2 below.)   If you do not have python3 on your system, you will have to install it.  We recommend the `Miniconda` python distribution.  Download and install the Python 3.6 version of `Miniconda`.
-    * Here is how to do that
+    * Here is how to do that:
     1. Download the 64-bit bash installer [here](https://conda.io/miniconda.html).
-    2. To run the installer, you will have to issue a command in the terminal, so you will have to launch a terminal session.  From the Finder, select `Go`, then `Utilities`. Finallly, double click `Terminal` as shown:
+    2. To run the installer, you will have to issue a command in the terminal, so you will have to launch a terminal session.  From the Finder, select `Go`, then `Utilities`. Finally, double click `Terminal` as shown:
 ![Finding the terminal](./screenshots/mac-find-terminal.png "Finding the Terminal")
-    3. In the terminal window, type `cd ~/Downloads` and hit enter onto naviate to the `Downloads` directory.
+    3. In the terminal window, type `cd ~/Downloads` and hit enter onto navigate to the `Downloads` directory.
     4. type `sh Miniconda3-latest-macOSX-86_64.sh` (the name of the of file you just downloaded) and hit enter, as shown below.  (You can save yourself some typing by using tab completion.  Start typing just the beginning -- say, `sh Minicon` and then hit the tab key.)  
 ![Installing Miniconda](./screenshots/mac-installing-miniconda.png "Installing Miniconda")
 This will begin the process of installing python3 on your system.  Hit enter several times to scroll through the license agreement, and finally type `yes` to accept it.  Press enter to confirm the location when asked.  The terminal may appear to hang for a moment, but do not worry.  It should start moving along shortly.  You see a message `Do you wish the installer to prepend the Miniconda3 install location to PATH in your /Users/<user name>/.bash_profile?`  Type `yes`.  Quit the terminal.
@@ -71,13 +71,18 @@ This will begin the process of installing python3 on your system.  Hit enter sev
 4. to begin using the azure environment, type "source activate" as per the instructions.   You are now ready to submit an image containing handwritten text to the Azure recognizer as in the [Usage](#usage) section below.  When you are finished, you can type "deactivate," or simply close the terminal.  
 
 ### Usage
-You can run this on a single image, or on a file containing the paths to as many images as you like.
+To use these tools, you must first activate the azure environment.  Open a command terminal window, navigate to the azure directory (as described in the installation instructions above) and activate the environment:
+ * Windows users, simply type `activate`.
+ * Mac and Linux users, type, `source activate`.
+
+You can run the Handwriting recognizer on a single image, or on a file containing the paths to as many images as you like.  A sample image, `example.png` has been provided for you in this directory for testing.
+
 The form of the command will be:
 `python recognize_text.py config_file (-i INPUT_IMAGE | -f FILE_OF_INPUT_PATHS) [-o OUTPUT_DIRECTORY] [--ocr]`
 * `config_file` is the config file containing the API URL and the path to the file containing your subscription key.
-* To run recognition on a single image, the next would be `-i INPUT_IMAGE`, or, to run a batch of images, it would be `-f FILE_OF_INPUT_PATHS`.
-* If you'd like the output to go anywhere other than the current directory you can pass `-o OUTPUT_DIRECTORY`, or just leave it out for the current directory.
-* If you'd like to run optical character recognition for typewritten text as opposed to handwriting, pass `--ocr`. 
+* To run recognition on a single image, the next thing to type would be `-i INPUT_IMAGE`, or, to run a batch of images, it would be `-f FILE_OF_INPUT_PATHS`.
+* If you'd like the output to go anywhere other than the current directory you can add `-o OUTPUT_DIRECTORY`, or just leave it out for the current directory.
+* If you'd like to run optical character recognition for typewritten text as opposed to handwriting, additionally type `--ocr`. 
 
 #### Examples:
 * for Handwriting recognition for a single file:
