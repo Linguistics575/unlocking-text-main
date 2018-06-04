@@ -1,3 +1,4 @@
+#!/bin/python3
 import PyPDF2 as pdf
 import os
 import argparse
