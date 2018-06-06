@@ -21,8 +21,15 @@ argparser = argparse.ArgumentParser(description='Convert PDF pages to JPG files'
 argparser.add_argument('filename', metavar='F', nargs='+', help='PDF File')
 argparser.add_argument('-r', type=int, default=250, help='Image resolution (at least 100, 250+ recommended)')
 argparser.add_argument('-p', type=int, default=0, help='Start page number (default is 0)')
+argparser.add_argument('-s', type=int, help='Start page of range')
+argparser.add_argument('-z', type=int, help='End page of range')
 
 args = argparser.parse_args()
+
+if args.s:
+    start_pg = args.s - args.p
+else:
+    start_pg = 0
 
 for fname in args.filename:
     pdfFile = open(fname, 'rb')
@@ -38,7 +45,19 @@ for fname in args.filename:
 
     sys.stdout.write('%s, %d pages\n' % (fname, pdfreader.numPages))
     logFile.write('Reading file "%s", %d pages, resolution:%d,  %s\n' % (fname, pdfreader.numPages, args.r, datetime.datetime.now().strftime("%I:%M%p, %B %d, %Y")))
-    for pg in range(pdfreader.numPages):
+
+    if args.z:
+        end_pg = min(args.z-args.p, pdfreader.numPages-1)
+    else:
+        end_pg = pdfreader.numPages-1
+
+    if start_pg > end_pg:
+        sys.stderr.write('ERROR: range %d to %d not in file "%s"\n' % (args.s, args.z, fname))
+        logFile.write('ERROR: range %d to %d not in file "%s"\n' % (args.s, args.z, fname))
+        logFile.flush()
+        break
+
+    for pg in range(start_pg, end_pg+1):
         with Image(filename='%s[%d]' % (fname, pg), resolution=args.r) as img:
             img.save(filename='%s/page%d.jpg' % (dirname, (pg+args.p)))
             logFile.write('page %d - w:%d, h:%d\n' % (pg+args.p, img.width, img.height))

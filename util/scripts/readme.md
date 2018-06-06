@@ -1,6 +1,112 @@
-# Scan From PDF utility
+## Scan From PDF utility
 
-## The Python Script
+### User Guide
+The intent of the `scripts/` directory is to set up automated processes for scanning a large number of documents at once.
+
+In general, these are intended to be run on large servers. Running these scripts on your personal machine could run out of memory or disk space if run against too many documents at once.
+
+#### Condor Script
+These instructions assume that you have an account on a server machine with the Condor Job Scheduler installed. An example of such a machine is the University of Washington Linguistic Department's server, Patas. Most servers in the University of Washington will have Condor available. Check with Computer Support for your department if you're not sure.
+
+In the `scripts/` directory, there are two command files, `BATCH_SCAN_PDF.cmd` and `SCAN_JPG_DIR.cmd`. These contain the instructions for Condor to scan the specified files and to generate the text transcriptions.
+
+It is assumed that you have a set of source documents, either in the form of PDF files or in the form of a JPEG image for each page of the text. `BATCH_SCAN_PDF.cmd` will operate on a list of PDF files or on all PDF files in a directory, and `SCAN_JPEG_DIR.cmd` operates on all JPEG images in a single directory.
+
+##### Running Condor to Scan PDF Files
+If you have a collection of PDF files to scan, the easiest thing to do is to organize them in one directory on the server. Then set aside a directory where all of the output text files will be stored. This output will be in the form of directories with the source PDF name, with each page stored in its own text file.
+
+Copy the `BATCH_SCAN_PDF.cmd` file to your own file in `util/scripts` which will run your command. The text of this file will look like this:
+
+```
+#------------------------------------------------------------------------
+# Run the scan_from_pdf script on
+# a the list of *.pdf files provided
+# 
+# script command description (see scan_from_pdf.py -h)
+# usage: scan_from_pdf.py [-h] [-r R] [-i I] [-o O] [-p P] [-l L] [-f F [F ...]]
+ [-g]
+#
+# Scan PDF images and place pages into directory
+#
+# optional arguments:
+#   -h, --help  show this help message and exit
+#   -r R        Image resolution (at least 100, 600+ recommended)
+#   -i I        Input Directory containing PDF files
+#   -o O        Output Directory to which collections of text files are written
+#   -p P        Start page number (default is 0)
+#   -l L        Language being read (default is "eng")
+#   -f F [F ...] PDF image files to be scanned (default is all)
+#   -d          Turn on debug messages
+#------------------------------------------------------------------------
+universe	= vanilla
+executable 	= batch_scan_pdf.sh
+getenv		= true
+output		= scan.out
+error		= scan.err
+log		= scan.log
+arguments	= "-i /directory/path/to/pdf-files -o /directory/path/to/text-files -r 600 -d"
+transfer_executable = false
+queue
+```
+
+You should only need to edit the "`arguments`" setting of your new file. First, replace `/directory/path/to/pdf-files` with the directory path to the directory containing the PDF files you want to scan. Then replace `/directory/path/to/text-files` with the directory path to the directory where you want to store the output text files.
+
+If you know the optimal resolution, you can replace the `600` value here with the pixels-per-inch value you want. (see [`util/` User Guide](https://github.com/Linguistics575/unlocking-text-main/tree/master/util#user-guide) for instructions on finding the optimal resolution.) If you don't know the optimal resolution, leaving it at 600 should be fine for most documents.
+
+Once you have edited your new file, in the `util/scripts` directory, type the following:
+
+```$ condor_submit <BATCH_FILE_CMD_COPY>```
+
+where `<BATCH_FILE_CMD_COPY>` is replaced by the name of the file you have created.
+
+Exect the process to take as much as 20 to 30 seconds per page. It might take slightly more for large pages or densely-packed text, such as newspapers, slightly less for large-print or small documents.
+
+This could take a while if you are scanning dozens of books with several hundred pages apiece. For example, scanning 20 documents, each with 500 pages, will take somewhere between 60 and 80 hours to run. While this will take some time, it shouldn't overly strain the server.
+
+###### An Example
+Imagine you have a series of PDF files stored in the directory `/projects/ling575/itineraries`. You might want to output the text files to your own personal directory at `/home/my_account/ling575/itin_text`. First copy the .cmd file:
+
+```$ cp BATCH_SCAN_PDF.cmd BATCH_SCAN_PDF.itin.cmd```
+
+and then edit the `arguments` entry in `BATCH_SCAN_PDF.itin.cmd` to be:
+
+```
+arguments   = "-i /projects/ling575/itineraris -o /home/my_accout/ling575/itin_text -r 600 -d
+```
+
+Then run the condor command.
+
+```$ condor_submit BATCH_SCAN_PDF.itin.cmd```
+
+This will create a background process that attempts to scan and transcribe each PDF file in the directory. To verify that the process is running, you can type:
+
+```$ condor_q```
+
+and should see a process with your user name in the resulting list. If you can't find your process, check the file `scan.err` in the directory where you ran the process (i.e. in `util/scripts`). It should contain any explanation for errors it encountered.
+
+##### Running Condor to Scan JPEG files
+A `SCAN_JPG_DIR.cmd` file also exists to run the scan process on a directory of page images. (see [`util/` User Guide](https://github.com/Linguistics575/unlocking-text-main/tree/master/util#user-guide) for instructions on extracting JPEG images from a PDF.)
+
+As with the PDF Scan, you want to copy the `SCAN_JPG_DIR.cmd` file and edit the `arguments` line. In this file, the arguments consist of the directory path to the JPEG files and the directory path to the output for the text files for that document. The process will create one transcript text file for each page that was scanned.
+
+Scanning the JPEG images will take much less time than scanning from a PDF file. The main downside is that extracting the image files from the PDF is time-consuming and will use up disk space if the document is particularly large. The main reasons to use this option is either because the source documents were in JPEG and not PDF format, or because the PDF Scan process ran into issues extracting the images for the specific PDF. (See [issues](https://github.com/Linguistics575/unlocking-text-main/tree/master/util/scripts#technical-documentation) in the Technical Documentation.)
+###### An Example
+Imagine you have a collection of JPEG images for the pages of one document at `/project/ling575/journal-1889`. Create a location to output the text transcripts in your own account, say at `/home/my_account/ling575/journal-1889-text`. Now create a new copy of the command file.
+
+```$ cp SCAN_JPG_DIR.cmd SCAN_JPG_DIR_journal-1889.cmd```
+
+Edit the `arguments` line of the new file:
+
+```
+arguments   = "/projects/ling575/journal-1889 /home/my_accounts/ling575/journal-1889-text"
+```
+
+Then run the process:
+
+```$ condor_submit SCAN_JPG_DIR_journal-1889.cmd```
+
+### Technical Documentation
+#### The Python Script
 The python script will extract pages from a PDF file as images and run the Tesseract scanner against each page, generating a series of page_####.txt files as output. The process typically takes between twenty to thirty seconds per page, depending on the size of the page and density of text.
 
 The controls for the script are:
@@ -35,7 +141,7 @@ All command line arguments are optional:
 ### The Condor Command File
 Since scanning a 500-page document could possibly take as much as four hours to complete, it is best to run the scanning utility on Condor so that it runs in the background. This cuts down on overuse of the server and lets you do other work while the scan is taking place. 
 
-In the directory, you can see a sample SCAN_ALL.cmd file. This provides the instructions to Condor to let it know what to do. To scan the documents you are interseted in, you need to modify the "arguments" setting in the file. An example looks like this:
+In the directory, you can see a sample BATCH_SCAN_PDF.sample.cmd file. This provides the instructions to Condor to let it know what to do. To scan the documents you are interseted in, you need to modify the "arguments" setting in the file. An example looks like this:
 
 
 ```
@@ -57,7 +163,7 @@ arguments      = "-i /home/myAccount/myRepository -o/home/myAccount/myScannedFil
 ### Running the Condor Process
 Once you have set the arguments as you want them, type the command:
 
-    $ condor_submit SCAN_ALL.cmd
+    $ condor_submit BATCH_SCAN_PDF.cmd
 
 This will start the process in the background.
 

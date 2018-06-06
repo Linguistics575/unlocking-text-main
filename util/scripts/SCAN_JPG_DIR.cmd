@@ -18,11 +18,11 @@
 #   -d          Turn on debug messages
 #------------------------------------------------------------------------
 universe	= vanilla
-executable 	= scan_all.sh
+executable 	= scan_pages.sh
 getenv		= true
 output		= scan.out
 error		= scan.err
 log		= scan.log
-arguments	= "-i sample -o tmp -r 800 -f sample_journal.pdf -d"
+arguments	= "/directory/path/to/image/files /directory/path/to/text/output/"
 transfer_executable = false
 queue
