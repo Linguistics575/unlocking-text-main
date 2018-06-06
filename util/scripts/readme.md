@@ -5,12 +5,15 @@ The intent of the `scripts/` directory is to set up automated processes for scan
 
 In general, these are intended to be run on large servers. Running these scripts on your personal machine could run out of memory or disk space if run against too many documents at once.
 
+##### Intended Audience
+In general, it is assumed that you have an account on a University of Washington server and have a passing acquaintance with Unix.
+
 #### Condor Script
-These instructions assume that you have an account on a server machine with the Condor Job Scheduler installed. An example of such a machine is the University of Washington Linguistic Department's server, Patas. Most servers in the University of Washington will have Condor available. Check with Computer Support for your department if you're not sure.
+These instructions assume that you have an account on a server machine with the Condor Job Scheduler (aka HTCondor) installed. An example of such a machine is the University of Washington Linguistic Department's server, Patas. Most servers in the University of Washington will have Condor available. Check with Computer Support for your department if you're not sure.
 
 In the `scripts/` directory, there are two command files, `BATCH_SCAN_PDF.cmd` and `SCAN_JPG_DIR.cmd`. These contain the instructions for Condor to scan the specified files and to generate the text transcriptions.
 
-It is assumed that you have a set of source documents, either in the form of PDF files or in the form of a JPEG image for each page of the text. `BATCH_SCAN_PDF.cmd` will operate on a list of PDF files or on all PDF files in a directory, and `SCAN_JPEG_DIR.cmd` operates on all JPEG images in a single directory.
+It is assumed that you have a set of source documents, either in the form of PDF files or a collection of JPEG images in the form of a JPEG image for each page of the text. `BATCH_SCAN_PDF.cmd` will operate on a list of PDF files or on all PDF files in a directory, and `SCAN_JPEG_DIR.cmd` operates on all JPEG images in a single directory.
 
 ##### Running Condor to Scan PDF Files
 If you have a collection of PDF files to scan, the easiest thing to do is to organize them in one directory on the server. Then set aside a directory where all of the output text files will be stored. This output will be in the form of directories with the source PDF name, with each page stored in its own text file.
@@ -137,8 +140,8 @@ All command line arguments are optional:
   -d                Turn on Debug messages
        If this is specified, then debugging messages are written to the screen, tracking the operations.
 ```
-## Running the Script From Condor
-### The Condor Command File
+#### Running the Script From Condor
+##### The Condor Command File
 Since scanning a 500-page document could possibly take as much as four hours to complete, it is best to run the scanning utility on Condor so that it runs in the background. This cuts down on overuse of the server and lets you do other work while the scan is taking place. 
 
 In the directory, you can see a sample BATCH_SCAN_PDF.sample.cmd file. This provides the instructions to Condor to let it know what to do. To scan the documents you are interseted in, you need to modify the "arguments" setting in the file. An example looks like this:
@@ -160,7 +163,7 @@ If you want to read all of the PDF files in one directory, set the -i value to t
 arguments      = "-i /home/myAccount/myRepository -o/home/myAccount/myScannedFiles -r 800"
 ```
 
-### Running the Condor Process
+##### Running the Condor Process
 Once you have set the arguments as you want them, type the command:
 
     $ condor_submit BATCH_SCAN_PDF.cmd
@@ -184,8 +187,8 @@ You will usually see a "1" under "IDLE" early on. To make sure it is working cor
 If the process ends early, the errors will be listed in the file "scan.err".
 
 
-## Issues
-### Tesseract Warning Messages
+#### Issues
+##### Tesseract Warning Messages
 Some warnings will be reported by the scanner ("Tesseract") which are ignorable, but unfortunately cannot be prevented from being written to the scan.err file. These can look something like this:
 
 ```
@@ -195,7 +198,7 @@ Page 1
 Warning in pixReadMemTiff: tiff page 1 not found
 ```
 
-### ImageMagick GhostScript incompatibilities
+##### ImageMagick GhostScript incompatibilities
 Due to some issues with the image extraction code, which calls the ImageMagick application, and the current version of GhostScript on Patas, some PDF files cannot be read on Patas. If this happens, the error will be reported in the log file in the document output directory.
 
 ```

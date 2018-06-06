@@ -1,0 +1,1 @@
+## FineReader Templates for the Egyptian Gazette
