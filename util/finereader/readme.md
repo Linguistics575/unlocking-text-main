@@ -13,3 +13,7 @@ Apart from those concerns, it is a good tool for extracting text from files. Any
 * It is possible to create document templates, directing the scanning software to scan columns or only to ignore parts of the page that typically contain images or decoration. While handy, this will only work on a page-by-page basis or for pages with standard layouts.
 
 Some sample layouts are available in the [`util/finereader/eg_gazette/`](https://github.com/Linguistics575/unlocking-text-main/tree/master/util/finereader/eg_gazette) directory.
+
+```
+FineReader (c) ABBYY
+```

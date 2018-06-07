@@ -16,7 +16,8 @@ See also [our wiki](https://github.com/Linguistics575/unlocking-text-main/wiki/G
 
 Note: Each tool is provided with its own individual license, which you will find in the readme of its respective directory.
 
-Copyright (c) [year] [fullname]
+```
+Copyright (c) [2018] [Jimmy Bruno, Eric Lindberg]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,3 +36,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

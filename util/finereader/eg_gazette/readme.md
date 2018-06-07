@@ -27,3 +27,7 @@ Some final observations about FineReader:
 It is possible to scan multiple pages in one scan, but you can only apply one layout template for each scan. As a result, you could not scan one or more PDFs of the Egyptian Gazette, applying theappropriate template to each page, though you could load a large collection of first and second pages and apply the same template to those.
 
 FineReader seems to be quite effective at recognizing certain data types rather well, even when limited ot text fields. Tabular data is usually recognized, though the Egyptian Gazette text is still sufficiently cramped that the Word Error Rate hovers around 35% and usually more for things such as advertisements and shipping lists.
+
+```
+FineReader (c) ABBYY
+```

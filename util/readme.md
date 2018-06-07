@@ -80,3 +80,25 @@ It is not always obvious whether a PDF file already contains embedded text trans
 As with the Text Extractor, the JPEG Extractor makes use of PyPDF2 to iterate over pages and extract the images. The ability to experimentally generate only a few pages makes it easier to experiment with different resolution settings and to see how easily the document might be scanned in general.
 
 The script will generate a directory in the same location as the PDF document, and with the same name, excluding the "*.pdf" extension. It will also generate a log file, listing each file extracted, confirming each page and the size of the image, and noting any errors or warnings encountered.
+
+```
+Copyright (c) [2018] [Jimmy Bruno, Eric Lindberg]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
